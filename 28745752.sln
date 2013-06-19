@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "28745752", ".", "{F789A871-C155-48DB-98C5-F5A9A21018FB}"
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "2874575", ".", "{F789A871-C155-48DB-98C5-F5A9A21018FB}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/28745752"
-		Debug.AspNetCompiler.PhysicalPath = "..\28745752\"
+		Debug.AspNetCompiler.PhysicalPath = "..\2874575\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\28745752\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/28745752"
-		Release.AspNetCompiler.PhysicalPath = "..\28745752\"
+		Release.AspNetCompiler.PhysicalPath = "..\2874575\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\28745752\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
