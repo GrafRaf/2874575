@@ -1,8 +1,4 @@
 ﻿angular.module("fartukoff", [], function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/index.html', {
-        templateUrl: 'home.html',
-        controller: HomeCntrl
-    });
     $routeProvider.when('/galery', {
         templateUrl: 'galery.html',
         controller: GaleryCntrl
@@ -18,6 +14,10 @@
     $routeProvider.when('/contacts', {
         templateUrl: 'contacts.html',
         controller: ContactsCntrl
+    });
+    $routeProvider.when('/index.html', {
+        templateUrl: 'home.html',
+        controller: HomeCntrl
     });
     $routeProvider.when('/index', {
         templateUrl: 'home.html',
@@ -37,9 +37,13 @@ function MainCntrl($scope, $route, $routeParams, $location) {
     $scope.$routeParams = $routeParams;
 }
 
-function HomeCntrl($scope, $routeParams) {
+function HomeCntrl($scope, $routeParams, $location) {
     $scope.name = "HomeCntrl";
     $scope.params = $routeParams;
+    if ($location.$$search["contacts"])
+    {
+        $location.url("/contacts");
+    }
     $scope.mode = {
         test: "test123"
     };
