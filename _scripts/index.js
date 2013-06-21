@@ -39,6 +39,13 @@ function HomeCntrl($scope, $routeParams) {
     $scope.mode = {
         test: "test123"
     };
+    $("#myCarousel").carousel();
+    $scope.prev = function () {
+        $("#myCarousel").carousel('prev');
+    }
+    $scope.next = function () {
+        $("#myCarousel").carousel('next');
+    }
 }
 
 function GaleryCntrl($scope, $routeParams) {
