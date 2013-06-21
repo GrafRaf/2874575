@@ -40,13 +40,11 @@ function MainCntrl($scope, $route, $routeParams, $location) {
 function HomeCntrl($scope, $routeParams, $location) {
     $scope.name = "HomeCntrl";
     $scope.params = $routeParams;
-    if ($location.$$search["contacts"])
-    {
-        $location.url("/contacts");
-    }
-    $scope.mode = {
-        test: "test123"
-    };
+    if ($location.$$search["catalog"]) $location.url("/catalog");
+    if ($location.$$search["contacts"]) $location.url("/contacts");
+    if ($location.$$search["galery"]) $location.url("/galery");
+    if ($location.$$search["technology"]) $location.url("/technology");
+
     $("#myCarousel").carousel();
     $scope.prev = function () {
         $("#myCarousel").carousel('prev');
