@@ -1,0 +1,19 @@
+﻿<div class="modal-body">
+    <div id="showBoxCarousel" class="carousel slide" data-interval="3000">
+        <ol class="carousel-indicators">
+            <li ng-repeat="img in model.images" data-target="#showBoxCarousel" data-slide-to="{{$index}}"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="../content/catalog/{{model.src}}/001.png" />
+            </div>
+            <div ng-repeat="img in model.images" class="item">
+                <img ng-src="{{img}}" />
+            </div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" ng-click="prev()" href="#" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" ng-click="next()" href="#" data-slide="next">&rsaquo;</a>
+  </div>
+</div>

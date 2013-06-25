@@ -1,4 +1,4 @@
-﻿angular.module("fartukoff", [], function ($routeProvider, $locationProvider) {
+﻿angular.module("fartukoff", ['ui.bootstrap.dialog'], function ($routeProvider, $locationProvider, $dialogProvider) {
     $routeProvider.when('/galery', {
         templateUrl: 'galery.html',
         controller: GaleryCntrl
@@ -59,9 +59,64 @@ function GaleryCntrl($scope, $routeParams) {
     $scope.params = $routeParams;
 }
 
-function CatalogCntrl($scope, $routeParams) {
+function CatalogCntrl($scope, $routeParams, $dialog) {
     $scope.name = "CatalogCntrl";
     $scope.params = $routeParams;
+    $scope.model = {
+        showCatalogOpts: {
+            backdrop: true,
+            keyboard: true,
+            backdropClick: true,
+            templateUrl: '_views/showbox.html',
+            controller: 'ShowCatalogController'
+        }
+    };
+
+    $scope.showCatalog = function (src,cnt) {
+        var currentitem = function () {
+            return { count: cnt, src: src };
+        };
+        $dialog.dialog(
+            angular.extend($scope.model.showCatalogOpts,
+            { resolve: { item: angular.copy(currentitem) } }))
+          .open()
+          .then(function (result) {
+              if (result) {
+                  angular.copy(result, currentitem);
+                  alert(result.name)
+              }
+              currentitem = undefined;
+          });
+    };
+}
+
+function ShowCatalogController($scope, $http, item, dialog) {
+    var items = [];
+    for (var i = 2; i <= item.count; i++) {
+        items.push("../content/catalog/" + item.src + "/00" + i + ".png");
+    }
+    
+    $scope.model = {
+        item: item,
+        images: items,
+        src: item.src
+    };
+
+    $scope.save = function () {
+        var item = $scope.model;
+    };
+
+    $scope.cancel = function () {
+        dialog.close(undefined);
+    };
+
+    $("#showBoxCarousel").carousel();
+    $scope.prev = function () {
+        $("#showBoxCarousel").carousel('prev');
+    }
+    $scope.next = function () {
+        $("#showBoxCarousel").carousel('next');
+    }
 }
 
 function TechnologyCntrl($scope, $routeParams) {
