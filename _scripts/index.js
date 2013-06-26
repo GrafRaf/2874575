@@ -106,7 +106,7 @@ function ShowCatalogController($scope, $http, item, dialog) {
         var item = $scope.model;
     };
 
-    $scope.cancel = function () {
+    $scope.close = function () {
         dialog.close(undefined);
     };
 
