@@ -31,10 +31,22 @@
     $locationProvider.html5Mode(true);
 });
 
-function MainCntrl($scope, $route, $routeParams, $location) {
+function MainCntrl($scope, $route, $routeParams, $location, $http) {
     $scope.$route = $route;
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
+    $scope.test = function () {
+        alert(GetFakeData($http,$scope));
+        //$http({ method: 'GET', url: 'http://freegeoip.net/rest/fartuk54.ru' }).
+        //  success(function (data, status, headers, config) {
+        //      //$scope.orders = data;
+        //      alert(data);
+        //  }).
+        //  error(function (data, status, headers, config) {
+        //      alert(status);
+        //      alert(data);
+        //  });
+    }
 }
 
 function HomeCntrl($scope, $routeParams, $location) {
