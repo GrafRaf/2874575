@@ -85,3 +85,12 @@
 .mt60px{
     margin-top:60px;
 }
+
+.modal {
+    width:800px;
+    margin-left:-400px;
+}
+
+.modal-body{
+    max-height:600px;
+}

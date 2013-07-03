@@ -2,7 +2,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 </div>-->
 <div class="modal-body">
-    <div id="showBoxCarousel" class="carousel slide" data-interval="3000">
+    <div id="showBoxCarousel" class="carousel slide pagination-centered" data-interval="3000">
         <ol class="carousel-indicators" ng-show="model.images.length<10">
             <li ng-repeat="img in model.images" data-target="#showBoxCarousel" data-slide-to="{{$index}}"></li>
         </ol>
@@ -12,9 +12,9 @@
                 <h4 ng-show="model.isShowIndex">{{img.index}}</h4>
             </div>
         </div>
-        <a class="carousel-control left"  ng-class="{mt60px:model.isShowIndex}" ng-click="prev()" href="#" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control left" ng-class="{mt60px:model.isShowIndex}" ng-click="prev()" href="#" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" ng-class="{mt60px:model.isShowIndex}" ng-click="next()" href="#" data-slide="next">&rsaquo;</a>
-  </div>
+    </div>
 </div>
 <div class="modal-footer">
   <button ng-click="close()" class="btn">Закрыть</button>
