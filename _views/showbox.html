@@ -12,8 +12,8 @@
                 <h4 ng-show="model.isShowIndex">{{img.index}}</h4>
             </div>
         </div>
-        <a class="carousel-control left" ng-click="prev()" href="#" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" ng-click="next()" href="#" data-slide="next">&rsaquo;</a>
+        <a class="carousel-control left"  ng-class="{mt60px:model.isShowIndex}" ng-click="prev()" href="#" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" ng-class="{mt60px:model.isShowIndex}" ng-click="next()" href="#" data-slide="next">&rsaquo;</a>
   </div>
 </div>
 <div class="modal-footer">

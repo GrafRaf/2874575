@@ -171,7 +171,7 @@ function ShowCatalogController($scope, $http, item, dialog) {
         var index = (indx > 99 ? "" + indx : (indx > 9 ? "0" + indx : "00" + indx));
         items.push(
             {
-                src: "../content/catalog/" + item.src + "/" + index + ".png",
+                src: "../content/catalog/" + item.src + "/" + index + ".jpg",
                 index: index
             });
     }
