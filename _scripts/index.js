@@ -66,9 +66,35 @@ function HomeCntrl($scope, $routeParams, $location) {
     }
 }
 
-function GaleryCntrl($scope, $routeParams) {
+function GaleryCntrl($scope, $routeParams, $dialog) {
     $scope.name = "GaleryCntrl";
     $scope.params = $routeParams;
+    $scope.model = {
+        showGaleryOpts: {
+            backdrop: true,
+            keyboard: true,
+            backdropClick: true,
+            templateUrl: '_views/showbox.html',
+            controller: 'ShowGaleryController'
+        }
+    };
+
+    $scope.showCatalog = function (src, cnt, offset) {
+        var currentitem = function () {
+            return { count: cnt, src: src, offset: offset };
+        };
+        $dialog.dialog(
+            angular.extend($scope.model.showGaleryOpts,
+            { resolve: { item: angular.copy(currentitem) } }))
+          .open()
+          .then(function (result) {
+              if (result) {
+                  angular.copy(result, currentitem);
+                  alert(result.name)
+              }
+              currentitem = undefined;
+          });
+    };
 }
 
 function CatalogCntrl($scope, $routeParams, $dialog) {
@@ -84,9 +110,9 @@ function CatalogCntrl($scope, $routeParams, $dialog) {
         }
     };
 
-    $scope.showCatalog = function (src,cnt) {
+    $scope.showCatalog = function (src,cnt,offset) {
         var currentitem = function () {
-            return { count: cnt, src: src };
+            return { count: cnt, src: src, offset: offset };
         };
         $dialog.dialog(
             angular.extend($scope.model.showCatalogOpts,
@@ -102,16 +128,59 @@ function CatalogCntrl($scope, $routeParams, $dialog) {
     };
 }
 
-function ShowCatalogController($scope, $http, item, dialog) {
+function ShowGaleryController($scope, $http, item, dialog) {
     var items = [];
-    for (var i = 2; i <= item.count; i++) {
-        items.push("../content/catalog/" + item.src + "/00" + i + ".png");
+    for (var i = 1; i <= item.count; i++) {
+        var indx = item.offset + i;
+        var index = (indx > 99 ? "" + indx : (indx > 9 ? "0" + indx : "00" + indx));
+        items.push(
+            {
+                src: "../content/galery/" + item.src + "/" + index + ".png",
+                index: index
+            });
     }
     
     $scope.model = {
         item: item,
         images: items,
-        src: item.src
+        src: item.src,
+        isShowIndex: false
+    };
+
+    $scope.save = function () {
+        var item = $scope.model;
+    };
+
+    $scope.close = function () {
+        dialog.close(undefined);
+    };
+
+    $("#showBoxCarousel").carousel();
+    $scope.prev = function () {
+        $("#showBoxCarousel").carousel('prev');
+    }
+    $scope.next = function () {
+        $("#showBoxCarousel").carousel('next');
+    }
+}
+
+function ShowCatalogController($scope, $http, item, dialog) {
+    var items = [];
+    for (var i = 1; i <= item.count; i++) {
+        var indx = item.offset + i;
+        var index = (indx > 99 ? "" + indx : (indx > 9 ? "0" + indx : "00" + indx));
+        items.push(
+            {
+                src: "../content/catalog/" + item.src + "/" + index + ".png",
+                index: index
+            });
+    }
+
+    $scope.model = {
+        item: item,
+        images: items,
+        src: item.src,
+        isShowIndex:true
     };
 
     $scope.save = function () {
