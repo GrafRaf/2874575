@@ -37,7 +37,7 @@ function MainCntrl($scope, $route, $routeParams, $location, $http) {
     $scope.$routeParams = $routeParams;
     $scope.test = function () {
         alert(GetFakeData($http,$scope));
-        //$http({ method: 'GET', url: 'http://freegeoip.net/rest/fartuk54.ru' }).
+        //$http({ method: 'GET', url: 'http://freegeoip.net/rest/fartuk55.ru' }).
         //  success(function (data, status, headers, config) {
         //      //$scope.orders = data;
         //      alert(data);
